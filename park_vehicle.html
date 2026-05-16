@@ -1,0 +1,54 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<div class="form-box">
+
+    <h1>Park Vehicle</h1>
+
+    <form method="POST">
+
+        <input type="text"
+        name="vehicle_no"
+        placeholder="Vehicle Number"
+        required>
+
+        <input type="text"
+        name="owner_name"
+        placeholder="Owner Name"
+        required>
+
+        <select name="vehicle_type" required>
+
+            <option value="">
+                Select Vehicle Type
+            </option>
+
+            <option value="Bike">
+                Bike
+            </option>
+
+            <option value="Car">
+                Car
+            </option>
+
+            <option value="Truck">
+                Truck
+            </option>
+
+        </select>
+
+        <input type="number"
+        name="hours"
+        placeholder="Parking Hours"
+        required>
+
+        <button type="submit">
+            Park Vehicle
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}
