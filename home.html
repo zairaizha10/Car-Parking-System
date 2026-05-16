@@ -1,0 +1,98 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<h1 style="color: rgb(248, 243, 205); text-shadow: 2px 2px 8px black;">
+    🚗Welcome to Car Parking System🚕
+</h1>
+
+
+
+<div class="card">
+    <h3 style="color: rgb(248, 243, 205); text-shadow: 2px 2px 8px black;">
+        Available Parking Slots
+    </h3>
+    <p>{{ available_slots }}</p>
+</div>
+
+<h2>Parked Vehicles</h2>
+<div class="card">
+
+    <h3 style="color: rgb(248, 243, 205); text-shadow: 2px 2px 8px black;">
+        Parking Rates
+    </h3>
+
+    <p>Bike → ₹10/hour</p>
+
+    <p>Car → ₹20/hour</p>
+
+    <p>Truck → ₹40/hour</p>
+
+</div>
+
+<table>
+
+    <tr>
+        <th>ID</th>
+        <th>Vehicle No</th>
+        <th>Type</th>
+        <th>Owner</th>
+        <th>Entry Time</th>
+        <th>Status</th>
+        <th>QR Code</th>
+        <th>Fee</th>
+        <th>Action</th>
+    </tr>
+
+    {% for vehicle in vehicles %}
+
+    <tr>
+
+        <td>{{ vehicle.id }}</td>
+
+        <td>{{ vehicle.vehicle_no }}</td>
+
+        <td>{{ vehicle.vehicle_type }}</td>
+
+        <td>{{ vehicle.owner_name }}</td>
+
+        <td>{{ vehicle.entry_time }}</td>
+
+        <td>{{ vehicle.status }}</td>
+
+        <td>
+            <img src="{{ url_for('static', filename='qr_codes/' + vehicle.id|string + '.png') }}"
+                width="80">
+        </td>
+
+        <td>
+            {% if vehicle.fee %}
+                ₹{{ vehicle.fee }}
+            {% else %}
+                --
+            {% endif %}
+        </td>
+
+        <td>
+
+            {% if vehicle.status == 'Parked' %}
+
+                <a href="/exit_vehicle/{{ vehicle.id }}">
+                    Exit
+                </a>
+
+            {% else %}
+
+                Completed
+
+            {% endif %}
+
+        </td>
+
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+{% endblock %}
