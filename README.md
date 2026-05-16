@@ -1,4 +1,4 @@
-🚗 Smart Car Parking System 🅿️
+🚗 Car Parking System 🅿️
 
 A modern Flask-based web application designed to automate vehicle parking management with smart features like user authentication, admin dashboard, parking fee calculation, QR code generation, analytics, and vehicle search system.
 
@@ -19,7 +19,6 @@ A modern Flask-based web application designed to automate vehicle parking manage
 - SQLAlchemy
 - HTML
 - CSS
-- JavaScript
 - Jinja2
 
 📊 Parking Rates
