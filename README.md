@@ -10,7 +10,6 @@ A modern Flask-based web application designed to automate vehicle parking manage
 - QR Code Generation
 - Vehicle Search Functionality
 - Edit & Delete Options for Admin
-- Dashboard Analytics & Charts
 - Responsive UI with Attractive Design
 
 🛠️ Tech Stack
