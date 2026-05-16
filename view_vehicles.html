@@ -1,0 +1,86 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<h1 style="color: rgb(248, 243, 205);">
+    All Parked Vehicles
+</h1>
+
+<form method="GET" action="/view_vehicles">
+
+    <input
+        type="text"
+        name="search"
+        placeholder="Search Vehicle"
+        class="search-box"
+    >
+
+    <button type="submit">
+        Search
+    </button>
+
+</form>
+
+<table>
+     
+    
+    <tr>
+        <th>ID</th>
+        <th>Vehicle No</th>
+        <th>Owner</th>
+        <th>Type</th>
+        <th>Hours</th>
+        <th>Fee</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+
+    {% for vehicle in vehicles %}
+
+    <tr>
+        <td>{{ vehicle.id }}</td>
+        <td>{{ vehicle.vehicle_no }}</td>
+        <td>{{ vehicle.owner_name }}</td>
+        <td>{{ vehicle.vehicle_type }}</td>
+        <td>{{ vehicle.hours }}</td>
+        <td>₹{{ vehicle.fee }}</td>
+
+        <td>
+
+        {% if session.get('is_admin') %}
+
+            <a href="/edit_vehicle/{{ vehicle.id }}">
+                Edit
+            </a>
+
+        {% else %}
+
+            No Access
+
+        {% endif %}
+
+        </td>
+
+        <td>
+
+            {% if session.get('is_admin') %}
+
+                <a href="/delete_vehicle/{{ vehicle.id }}"
+                    class="delete-btn"
+                    onclick="return confirm('Delete this vehicle?')">
+
+                    Delete
+
+                </a>
+
+            {% endif %}
+
+        </td>
+
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+{% endblock %}

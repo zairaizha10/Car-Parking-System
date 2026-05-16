@@ -1,0 +1,66 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<h1>Admin Dashboard</h1>
+
+<div class="dashboard">
+
+    <div class="card">
+        <h3>Total Vehicles</h3>
+        <p>{{ total_vehicles }}</p>
+    </div>
+
+    <div class="card">
+        <h3>Total Income</h3>
+        <p>₹{{ total_income }}</p>
+    </div>
+
+    <div class="card">
+        <h3>Available Slots</h3>
+        <p>{{ available_slots }}</p>
+    </div>
+
+    <div class="card">
+        <h3>Occupied Slots</h3>
+        <p>{{ occupied_slots }}</p>
+    </div>
+
+</div>
+
+<h2>Recent Parked Vehicles</h2>
+
+<table>
+
+    <tr>
+        <th>ID</th>
+        <th>Vehicle No</th>
+        <th>Owner</th>
+        <th>Type</th>
+        <th>Hours</th>
+        <th>Fee</th>
+    </tr>
+
+    {% for vehicle in vehicles %}
+
+    <tr>
+
+        <td>{{ vehicle.id }}</td>
+
+        <td>{{ vehicle.vehicle_no }}</td>
+
+        <td>{{ vehicle.owner_name }}</td>
+
+        <td>{{ vehicle.vehicle_type }}</td>
+
+        <td>{{ vehicle.hours }}</td>
+
+        <td>₹{{ vehicle.fee }}</td>
+
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+{% endblock %}

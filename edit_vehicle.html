@@ -1,0 +1,54 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<div class="form-box">
+
+    <h1>Edit Vehicle</h1>
+
+    <form method="POST">
+
+        <input type="text"
+        name="vehicle_no"
+        value="{{ vehicle.vehicle_no }}"
+        required>
+
+        <input type="text"
+        name="owner_name"
+        value="{{ vehicle.owner_name }}"
+        required>
+
+        <select name="vehicle_type" required>
+
+            <option value="Bike"
+            {% if vehicle.vehicle_type == 'Bike' %}
+            selected
+            {% endif %}>
+            Bike
+            </option>
+
+            <option value="Car"
+            {% if vehicle.vehicle_type == 'Car' %}
+            selected
+            {% endif %}>
+            Car
+            </option>
+
+            <option value="Truck"
+            {% if vehicle.vehicle_type == 'Truck' %}
+            selected
+            {% endif %}>
+            Truck
+            </option>
+
+        </select>
+
+        <button type="submit">
+            Update Vehicle
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}
